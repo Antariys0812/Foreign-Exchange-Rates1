@@ -1,0 +1,736 @@
+[
+    {
+        "id": "1947483e275779cc",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "537c47a68c73edef",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f734578494e7b518",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8454b7aa86dae3de",
+        "type": "junction",
+        "z": "1947483e275779cc",
+        "x": 240,
+        "y": 900,
+        "wires": [
+            [
+                "8d53193835473c19",
+                "2150a36f33392309",
+                "ab0c0b6d3aedac51",
+                "e2470654ea593624"
+            ]
+        ]
+    },
+    {
+        "id": "9e34dbb96b3fe4e2",
+        "type": "junction",
+        "z": "1947483e275779cc",
+        "x": 680,
+        "y": 900,
+        "wires": [
+            [
+                "fbcdbea0b4699803",
+                "25be58b9f607cac4"
+            ]
+        ]
+    },
+    {
+        "id": "2e1e3d1b448c66d2",
+        "type": "junction",
+        "z": "1947483e275779cc",
+        "x": 680,
+        "y": 1020,
+        "wires": [
+            [
+                "3c8ae801c32be0e2",
+                "95e4069ea758fe90"
+            ]
+        ]
+    },
+    {
+        "id": "13c1aac4d7629560",
+        "type": "junction",
+        "z": "1947483e275779cc",
+        "x": 680,
+        "y": 1140,
+        "wires": [
+            [
+                "d34e989d38e8f3fa",
+                "e6c6035cf7025a9d",
+                "1da47f1e4b49f42a"
+            ]
+        ]
+    },
+    {
+        "id": "2abc327eac7b76a5",
+        "type": "tls-config",
+        "name": " Foreign Exchange Rates",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "cert (2).pem",
+        "keyname": "key_d9d7e25b-db58-4d70-b983-eb6ede9abe2e (1).pem",
+        "caname": "",
+        "servername": " sandbox.api.visa.com",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "92e56044dbb09783",
+        "type": "telegram bot",
+        "botname": "Foreign Exchange Rates",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "7ce27c82b6b8ce91",
+        "type": "telegram receiver",
+        "z": "1947483e275779cc",
+        "name": "",
+        "bot": "92e56044dbb09783",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 110,
+        "y": 900,
+        "wires": [
+            [
+                "8454b7aa86dae3de"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cfc3b6a6f4451076",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "rateProductCode?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Напишіть rateProductCode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 1240,
+        "wires": [
+            [
+                "1b1984c77f33334b"
+            ]
+        ]
+    },
+    {
+        "id": "1b1984c77f33334b",
+        "type": "telegram sender",
+        "z": "1947483e275779cc",
+        "name": "",
+        "bot": "92e56044dbb09783",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1150,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d53193835473c19",
+        "type": "switch",
+        "z": "1947483e275779cc",
+        "name": "which step",
+        "property": "step",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 370,
+        "y": 1060,
+        "wires": [
+            [
+                "a34d927999173d60"
+            ],
+            [
+                "edeadf47b8e57e3a"
+            ],
+            [
+                "0c974bc26e224dea"
+            ],
+            [
+                "e9586cdb6415102d"
+            ]
+        ]
+    },
+    {
+        "id": "e9586cdb6415102d",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "step 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step",
+                "pt": "global",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 1240,
+        "wires": [
+            [
+                "cfc3b6a6f4451076"
+            ]
+        ]
+    },
+    {
+        "id": "2150a36f33392309",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "show step",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "step",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 820,
+        "wires": [
+            [
+                "2b0fe49cb57d5261"
+            ]
+        ]
+    },
+    {
+        "id": "2b0fe49cb57d5261",
+        "type": "debug",
+        "z": "1947483e275779cc",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "a34d927999173d60",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "p1",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 900,
+        "wires": [
+            [
+                "9e34dbb96b3fe4e2"
+            ]
+        ]
+    },
+    {
+        "id": "fbcdbea0b4699803",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "destinationCurrencyCode?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Напишіть destinationCurrencyCode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 940,
+        "wires": [
+            [
+                "1b1984c77f33334b"
+            ]
+        ]
+    },
+    {
+        "id": "25be58b9f607cac4",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "step 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step",
+                "pt": "global",
+                "to": "2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edeadf47b8e57e3a",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "p2",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 1020,
+        "wires": [
+            [
+                "2e1e3d1b448c66d2"
+            ]
+        ]
+    },
+    {
+        "id": "3c8ae801c32be0e2",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "sourceCurrencyCode?",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Напишіть sourceCurrencyCode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 1060,
+        "wires": [
+            [
+                "1b1984c77f33334b"
+            ]
+        ]
+    },
+    {
+        "id": "95e4069ea758fe90",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "step 3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step",
+                "pt": "global",
+                "to": "3",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0c974bc26e224dea",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "p3",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 1140,
+        "wires": [
+            [
+                "13c1aac4d7629560"
+            ]
+        ]
+    },
+    {
+        "id": "d34e989d38e8f3fa",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "step 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step",
+                "pt": "global",
+                "to": "4",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6c6035cf7025a9d",
+        "type": "template",
+        "z": "1947483e275779cc",
+        "name": "",
+        "field": "payload.content",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "rateProductCode {{global.p1}}\ndestinationCurrencyCode {{global.p2}}\nsourceCurrencyCode {{global.p3}}",
+        "output": "str",
+        "x": 800,
+        "y": 1180,
+        "wires": [
+            [
+                "1b1984c77f33334b"
+            ]
+        ]
+    },
+    {
+        "id": "6ede158a5229316c",
+        "type": "debug",
+        "z": "1947483e275779cc",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "5f68f834cc13d00b",
+        "type": "http request",
+        "z": "1947483e275779cc",
+        "name": " Foreign Exchange Rates",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://sandbox.api.visa.com/forexrates/v2/foreignexchangerates",
+        "tls": "2abc327eac7b76a5",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "basic",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 1440,
+        "wires": [
+            [
+                "6ede158a5229316c",
+                "cd84be90da39597c"
+            ]
+        ]
+    },
+    {
+        "id": "1da47f1e4b49f42a",
+        "type": "template",
+        "z": "1947483e275779cc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"acquirerDetails\": {\n    \"bin\": 408999,\n    \"settlement\": {\n      \"currencyCode\": \"840\"\n    }\n  },\n  \"rateProductCode\": \"{{global.p1}}\",\n  \"markupRate\": \"0.07\",\n  \"destinationCurrencyCode\": \"{{global.p2}}\",\n  \"sourceAmount\": \"100.55\",\n  \"sourceCurrencyCode\": \"{{global.p3}}\"\n}",
+        "output": "json",
+        "x": 800,
+        "y": 1340,
+        "wires": [
+            [
+                "5f68f834cc13d00b"
+            ]
+        ]
+    },
+    {
+        "id": "e24b1b0c149f2ff4",
+        "type": "inject",
+        "z": "1947483e275779cc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 380,
+        "y": 1380,
+        "wires": [
+            [
+                "1da47f1e4b49f42a"
+            ]
+        ]
+    },
+    {
+        "id": "cd84be90da39597c",
+        "type": "function",
+        "z": "1947483e275779cc",
+        "name": "function 4 ",
+        "func": "let payload = {\n    chatId: global.get(\"chatid\"),\n    type: \"message\",\n    content: \"Сьогодні conversion Rate \" + msg.payload.conversionRate\n};\nreturn {payload};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 1300,
+        "wires": [
+            [
+                "1b1984c77f33334b",
+                "95e5e2f7ccc612e2"
+            ]
+        ]
+    },
+    {
+        "id": "ab0c0b6d3aedac51",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "chatid",
+                "pt": "global",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1500,
+        "wires": [
+            [
+                "00567e56aab1fb13"
+            ]
+        ]
+    },
+    {
+        "id": "e2470654ea593624",
+        "type": "debug",
+        "z": "1947483e275779cc",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "00567e56aab1fb13",
+        "type": "change",
+        "z": "1947483e275779cc",
+        "name": "show chatid",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "chatid",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1500,
+        "wires": [
+            [
+                "7af0c14c84893aa0"
+            ]
+        ]
+    },
+    {
+        "id": "7af0c14c84893aa0",
+        "type": "debug",
+        "z": "1947483e275779cc",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "95e5e2f7ccc612e2",
+        "type": "debug",
+        "z": "1947483e275779cc",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 1340,
+        "wires": []
+    }
+]
